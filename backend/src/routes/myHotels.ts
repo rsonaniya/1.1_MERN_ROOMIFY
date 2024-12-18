@@ -1,5 +1,5 @@
 import express from "express";
-import { addHotel } from "../controllers/myHotelController";
+import { addHotel, getAllHotels } from "../controllers/myHotelController";
 import multer from "multer";
 import { body } from "express-validator";
 import verifyToken from "../middleware/auth";
@@ -45,5 +45,7 @@ router.post(
   upload.array("imageFiles", 6),
   addHotel
 );
+
+router.get("/", verifyToken, getAllHotels);
 
 export default router;
